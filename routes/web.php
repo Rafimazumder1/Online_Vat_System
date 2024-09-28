@@ -4,11 +4,14 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\CompanyInformationController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UominfoController;
 use App\Http\Controllers\SupplierClientController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LocationController;
+use Illuminate\Support\Facades\Log;
+
 
 // Public routes
 Route::get('/', [LoginController::class, 'index'])->name('/'); // Home page
@@ -19,6 +22,30 @@ Route::get('/login', function () {
 
 Route::post('/loginn', [LoginController::class, 'loginn'])->name('loginn');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// user
+
+
+
+Route::get('/create-user', [UserController::class, 'showCreateUserForm'])->name('create.user.form');
+
+Route::post('/create-user', [UserController::class, 'store'])->name(name: 'create.user');
+
+// Route to show the edit form for a user
+Route::get('/edit-user/{apps_user}', [UserController::class, 'edit'])->name('edit.user');
+
+// Route to delete a user
+Route::delete('/delete-user/{apps_user}', [UserController::class, 'destroy'])->name('delete.user');
+
+
+
+
+
+
+
+
+
+
 
 // employe
 Route::get('/employeeinfo', [EmployeeController::class, 'index'])->name('employe.info');

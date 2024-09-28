@@ -3,11 +3,11 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-
+    use Notifiable ;
     // Specify the table associated with the model
     protected $table = 'ABC_USER';
 
@@ -46,4 +46,16 @@ public function getCompanyCodeAttribute($value)
     return $value;
 }
     // No need to implement additional methods if not using hashed passwords
+
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'APPS_USER', 'EMP_CODE');
+    }
+
+
+
+
+
+
 }

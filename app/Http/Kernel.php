@@ -60,4 +60,11 @@ class Kernel extends HttpKernel
     // other middleware groups...
 ];
 
+
+protected $routeMiddleware = [
+    // Other middleware...
+    'auth' => \App\Http\Middleware\Authenticate::class,
+];
+
+
 }
