@@ -97,7 +97,7 @@
 <div class="container-fluid px-4">
     <div class="card">
         <div class="card-header">
-            <b style="color:cornflowerblue">Company Information</b>
+            <b style="color:cornflowerblue">User Information</b>
         </div>
         <div class="card-body">
             <form action="{{ route('create.user') }}" method="POST" enctype="multipart/form-data">
@@ -115,9 +115,15 @@
                     </div>
 
                     <div class="col-md-3">
-                        <label for="roll" class="form-label">Roll</label>
-                        <input type="text" class="form-control" id="rollName" name="roll" required>
-                    </div>
+                        <label for="role" class="form-label">Role</label>
+                        <select class="form-control" id="roleName" name="role" required onchange="updateRoleName()">
+                            <option value="">Role</option>
+                            @foreach ($designations as $desig)
+                            <option value="{{ $desig->desig_code }}">{{ $desig->desig_name }}</option> <!-- Display EMP_NAME but use EMP_CODE as value -->
+                        @endforeach
+                    </select>
+                </div>
+
 
                     <div class="col-md-3">
                         <label for="password" class="form-label">Password</label>
@@ -149,7 +155,7 @@
                     <tr>
 
                         <th>User Name</th>
-                        <th>Roll</th>
+                        <th>Role</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -157,8 +163,8 @@
                     @foreach ($data as $users)
                         <tr>
                             <td>{{ $users->apps_user }}</td>
+
                             <td>{{ $users->user_role }}</td>
-                            <td>{{ $users->roll }}</td>
                             <td>
                                 <a href="{{ route('edit.user', $users->apps_user) }}" class="btn btn-warning btn-sm">Edit</a>
                                 <form action="{{ route('delete.user', $users->apps_user) }}" method="POST" style="display:inline;">

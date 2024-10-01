@@ -49,6 +49,8 @@
                   data-bs-parent="#sidenavAccordion">
                   <nav class="sb-sidenav-menu-nested nav">
                       <a class="nav-link" href="{{ route('employe.index') }}">Employee Information</a>
+                      <a class="nav-link" href="{{ route('create.user.form') }}">User Information</a>
+                      <a class="nav-link" href="{{ route('create.role.form') }}">Desgination</a>
 
                   </nav>
               </div>

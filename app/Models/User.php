@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Traits\hasRoles;
 
 class User extends Authenticatable
 {
@@ -22,7 +22,7 @@ class User extends Authenticatable
 
     // Specify which attributes should be mass-assignable
     protected $fillable = [
-        'APPS_USER', 'USER_PASSWORD',
+        'APPS_USER', 'USER_PASSWORD','USER_ROLE',
         'user_id', // Add other fields if needed
         'COMPANY_CODE',
     ];
@@ -35,6 +35,23 @@ class User extends Authenticatable
         'USER_ID' => 'string',
         // other casts
     ];
+
+
+    public function role()
+    {
+        return $this->belongsTo(Designation::class, 'ROLE_ID', 'DESIG_CODE');
+    }
+
+    // public function hasRole($roleName)
+    // {
+    //     return $this->role && $this->role->DESIG_NAME === $roleName;
+    // }
+
+    // public function getRoleNameAttribute()
+    // {
+    //     return $this->role ? $this->role->DESIG_NAME : null;
+    // }
+
 
     public function getAuthIdentifier()
 {

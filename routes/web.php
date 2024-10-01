@@ -10,6 +10,7 @@ use App\Http\Controllers\UominfoController;
 use App\Http\Controllers\SupplierClientController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\DesignationController;
 use Illuminate\Support\Facades\Log;
 
 
@@ -33,11 +34,15 @@ Route::post('/create-user', [UserController::class, 'store'])->name(name: 'creat
 
 // Route to show the edit form for a user
 Route::get('/edit-user/{apps_user}', [UserController::class, 'edit'])->name('edit.user');
-
+Route::put('/update-user/{apps_user}', [UserController::class, 'update'])->name('update.user');
 // Route to delete a user
 Route::delete('/delete-user/{apps_user}', [UserController::class, 'destroy'])->name('delete.user');
 
+// role
 
+Route::get('/create-role', [DesignationController::class, 'index'])->name('create.role.form');
+
+Route::post('/create-role', [DesignationController::class, 'store'])->name(name: 'create.role');
 
 
 
