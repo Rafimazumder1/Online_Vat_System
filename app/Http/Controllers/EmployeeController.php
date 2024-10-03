@@ -16,7 +16,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        // dd($employees);
+         dd($employees);
 
     //    $Employes = DB::table(table: 'HR_EMPLOYEE')->get();
 

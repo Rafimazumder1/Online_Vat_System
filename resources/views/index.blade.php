@@ -8,6 +8,22 @@
         Welcome To VAT Software,
     </p>
 
+    @if(session('success'))
+    <div style="color: green;">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('company_name'))
+    <p>Company Name: {{ session('company_name') }}</p>
+@else
+    <p>Company Name: N/A</p>
+@endif
+
+
+
+
+
     @if(Auth::check())
     <p>Welcome, {{ Auth::user()->apps_user }}!</p>
     <p>Company Code: {{ auth::user()->company_code }}</p>

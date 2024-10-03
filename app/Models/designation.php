@@ -20,6 +20,7 @@ class designation extends Model
 
         // Define fillable columns
         protected $fillable = [
+            
             'DESIG_NAME',
             'STATUS',
             'USER_ID',

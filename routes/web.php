@@ -43,6 +43,10 @@ Route::delete('/delete-user/{apps_user}', [UserController::class, 'destroy'])->n
 Route::get('/create-role', [DesignationController::class, 'index'])->name('create.role.form');
 
 Route::post('/create-role', [DesignationController::class, 'store'])->name(name: 'create.role');
+Route::delete('/designation-info/{desig_code}/delete', [DesignationController::class, 'destroy'])->name('role.destroy');
+Route::get('/designation-info/{desig_code}/edit', [DesignationController::class, 'edit'])->name('designation.edit');
+Route::post('/designation-info/{desig_code}/update', [DesignationController::class, 'update'])->name('designation.update');
+
 
 
 
@@ -73,6 +77,8 @@ Route::put('/employe/update/{emp_code}', [EmployeeController::class, 'update'])-
 Route::get('dashboard', function () {
     return view('index'); // Ensure this matches your view file name and path
 })->middleware('auth')->name('dashboard');
+
+
 
 
     Route::get('/company-info/create', [CompanyInformationController::class, 'create'])->name('com.create');

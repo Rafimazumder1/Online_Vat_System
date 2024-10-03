@@ -23,8 +23,9 @@ class User extends Authenticatable
     // Specify which attributes should be mass-assignable
     protected $fillable = [
         'APPS_USER', 'USER_PASSWORD','USER_ROLE',
-        'user_id', // Add other fields if needed
+        'USER_ID', // Add other fields if needed
         'COMPANY_CODE',
+        'COMPANY_NAME',
     ];
 
     // Specify which attributes should be hidden for arrays
@@ -53,16 +54,17 @@ class User extends Authenticatable
     // }
 
 
+
     public function getAuthIdentifier()
 {
     return $this->getKey();
 }
 
-public function getCompanyCodeAttribute($value)
-{
-    return $value;
-}
-    // No need to implement additional methods if not using hashed passwords
+// public function getCompanyCodeAttribute($value)
+// {
+//     return $value;
+// }
+//     // No need to implement additional methods if not using hashed passwords
 
 
     public function employee()

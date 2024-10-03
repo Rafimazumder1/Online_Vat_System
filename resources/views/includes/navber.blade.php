@@ -12,13 +12,30 @@
 
     </a>
 </li> --}}
-
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
+
+    <div class="text-centert">
+        <p class="company-name">{{ session('company_name') }}</p>
+    </div>
+
+    <style>
+        .company-name {
+            color: white;
+            font-weight: bold;
+        }
+        /* Optionally, you can add this to center the text in the parent container */
+        .text-centert {
+            text-align: center;
+            margin-top: 17px;
+            margin-left: 286px;
+        }
+    </style>
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
+
             <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
                 aria-describedby="btnNavbarSearch" />
             <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
