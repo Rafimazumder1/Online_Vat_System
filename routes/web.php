@@ -12,7 +12,9 @@ use App\Http\Controllers\SupplierClientController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\HsController;
 use App\Models\ChartOfAccount;
+
 use Illuminate\Support\Facades\Log;
 
 
@@ -48,6 +50,14 @@ Route::post('/chart-add', [ChartOfAccountController::class, 'store'])->name('cre
 Route::get('/edit-chart/{id}', [ChartOfAccountController::class, 'edit'])->name('edit.chart');
 Route::put('/update-chart/{id}', [ChartOfAccountController::class, 'update'])->name('update.chart');
 Route::delete('/delete-chart/{id}', [ChartOfAccountController::class, 'destroy'])->name('delete.chart');
+
+
+
+Route::get('/hs-add', [HsController::class, 'index'])->name(name: 'create.hs.form');
+Route::post('/hs-add', [HsController::class, 'store'])->name('create.hs');
+Route::get('/edit-chart/{id}', [HsController::class, 'edit'])->name('edit.chart');
+Route::put('/update-chart/{id}', [HsController::class, 'update'])->name('update.chart');
+Route::delete('/delete-chart/{id}', [HsController::class, 'destroy'])->name('delete.chart');
 
 
 
