@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChartOfAccountController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\FrontendController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\SupplierClientController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DesignationController;
+use App\Models\ChartOfAccount;
 use Illuminate\Support\Facades\Log;
 
 
@@ -37,6 +39,22 @@ Route::get('/edit-user/{apps_user}', [UserController::class, 'edit'])->name('edi
 Route::put('/update-user/{apps_user}', [UserController::class, 'update'])->name('update.user');
 // Route to delete a user
 Route::delete('/delete-user/{apps_user}', [UserController::class, 'destroy'])->name('delete.user');
+
+
+// Chart Of Account
+
+Route::get('/chart-add', [ChartOfAccountController::class, 'index'])->name('create.chart.form');
+Route::post('/chart-add', [ChartOfAccountController::class, 'store'])->name('create.chart');
+Route::get('/edit-chart/{id}', [ChartOfAccountController::class, 'edit'])->name('edit.chart');
+Route::put('/update-chart/{id}', [ChartOfAccountController::class, 'update'])->name('update.chart');
+Route::delete('/delete-chart/{id}', [ChartOfAccountController::class, 'destroy'])->name('delete.chart');
+
+
+
+
+
+
+
 
 // role
 
