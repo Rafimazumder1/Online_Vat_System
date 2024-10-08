@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\ChartOfAccountController;
-use Illuminate\Support\Facades\Route;
+use App\Models\ChartOfAccount;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\CompanyInformationController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HsController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\UominfoController;
-use App\Http\Controllers\SupplierClientController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UominfoController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\IteminfoController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\DesignationController;
-use App\Http\Controllers\HsController;
-use App\Models\ChartOfAccount;
+use App\Http\Controllers\ChartOfAccountController;
 
-use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\SupplierClientController;
+use App\Http\Controllers\CompanyInformationController;
 
 
 // Public routes
@@ -60,7 +61,13 @@ Route::put('/update-chart/{id}', [HsController::class, 'update'])->name('update.
 Route::delete('/delete-chart/{id}', [HsController::class, 'destroy'])->name('delete.chart');
 
 
+// item information
 
+Route::get('/item-add', [IteminfoController::class, 'index'])->name(name: 'create.item.form');
+Route::post('/hsc-add', action: [IteminfoController::class, 'store'])->name('item.store');
+Route::get('/edit-chart/{id}', [HsController::class, 'edit'])->name('edit.chart');
+Route::put('/update-chart/{id}', [HsController::class, 'update'])->name('update.chart');
+Route::delete('/delete-chart/{id}', [HsController::class, 'destroy'])->name('delete.chart');
 
 
 

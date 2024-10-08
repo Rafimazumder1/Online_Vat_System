@@ -10,11 +10,9 @@ class Hs extends Model
     protected $table = 'HS_CODE_MT';
 
     // Primary Key
-    protected $primaryKey = ['COMPANY_CODE', 'HS_CODE', 'HSSYS_NO'];
+    // protected $primaryKey = ['COMPANY_CODE', 'HS_CODE', 'HSSYS_NO'];
     public $incrementing = false; // Disable auto-incrementing for composite keys
 
-    // Specify the connection if it's different from default
-    protected $connection = 'oracle'; // or whatever your Oracle connection name is in the config
 
     // Fillable fields for mass assignment
     protected $fillable = [

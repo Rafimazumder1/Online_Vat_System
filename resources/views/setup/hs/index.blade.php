@@ -122,6 +122,7 @@
                             </div>
 
                              <div class="col-md-4">
+
                                     <select name="control_head[]" class="form-control" required>
                                         <option value="">Select Control Head</option>
                                         @foreach($charts as $chart)
