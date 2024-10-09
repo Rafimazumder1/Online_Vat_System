@@ -19,6 +19,7 @@
                         <a class="nav-link" href="{{ route('uom.index') }}">UOM Information</a>
                         <a class="nav-link" href="{{ route('c&s.index') }}">Clint & Supplier</a>
                         <a class="nav-link" href="{{ route('create.chart') }}">Chart of Account</a>
+                        <a class="nav-link" href="{{ route('create.item.form') }}">Item Information</a>
                         <a class="nav-link" href="{{ route('create.hs.form') }}">Hs</a>
                         <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
                     </nav>
