@@ -66,8 +66,9 @@ Route::delete('/delete-chart/{id}', [HsController::class, 'destroy'])->name('del
 Route::get('/item-add', [IteminfoController::class, 'index'])->name(name: 'create.item.form');
 Route::post('/item-add', action: [IteminfoController::class, 'store'])->name('item.store');
 Route::get('/edit-item/{item_code}', [IteminfoController::class, 'edit'])->name('edit.items');
-Route::put('/update-chart/{item_code}', [IteminfoController::class, 'update'])->name('update.chart');
+Route::put('/update-item/{item_code}', [IteminfoController::class, 'update'])->name('update.item');
 Route::delete('/delete-item/{item_code}', [IteminfoController::class, 'destroy'])->name('delete.item');
+
 
 
 

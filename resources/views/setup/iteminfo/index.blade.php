@@ -113,16 +113,19 @@
                                     <td>{{ $item->primaryUom->uom ?? '' }}</td>
                                     <td>{{ $item->sconv_factor }}</td>
                                     <td>{{ $item->secondaryUom->uom ?? '' }}</td>
-                                    {{-- <td>
-                                    <a href="{{ route('edit.items', $item->item_code) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="{{ route('edit.items', $item->item_code) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <td>
+                                        @if(isset($item->item_code))
+                                            <a href="{{ route('edit.items', $item->item_code) }}" class="btn btn-sm btn-warning">Edit</a>
 
-                                        <form action="{{ route('delete.item', $item->item_code) }}" method="POST" style="display:inline-block;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                        </form>
-                                    </td> --}}
+                                            <form action="{{ route('delete.item', $item->item_code) }}" method="POST" style="display:inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                        @else
+                                            <p>Item code missing</p>
+                                        @endif
+                                    </td>
 
                                 </tr>
                             @endforeach

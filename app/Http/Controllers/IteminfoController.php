@@ -87,22 +87,95 @@ class IteminfoController extends Controller
      */
     public function edit($item_code)
     {
-     echo "hi";
+
+        $chart = DB::table('ACT_COA')->get();
+        $itemsuom = DB::table('INV_ITEM_UOM')->get();
+        // Fetch the item based on the item_code
+        $item = DB::table('INV_ITEM_MT')
+                    ->where('ITEM_CODE', $item_code)
+                    ->first(); // Get the first record
+
+        // Check if the item exists
+        if (!$item) {
+            return redirect()->route('item.index')->with('error', 'Item not found.');
+        }
+
+        // Return the view for editing the item
+        return view('setup.iteminfo.edit', compact('item','chart','itemsuom'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Iteminfo $iteminfo)
+    public function update(Request $request, $item_code)
     {
-        //
+        // Validate the incoming request
+        $request->validate([
+            'ITEM_NAME' => 'required|string|max:255',
+            'CAT_CODE' => 'required|string|max:255',
+            'TYPE_CODE' => 'required|string|max:255',
+            'ACCODE' => 'required|string|max:255',
+            'HS_CODE' => 'required|string|max:255',
+            'PCONV_FACTOR' => 'required|numeric',
+            'PITEM_UOM' => 'required|integer',
+            'SCONV_FACTOR' => 'required|numeric',
+            'SITEM_UOM' => 'required|integer',
+        ]);
+        // dd( $request);
+
+        // Update the item in the database
+        $updated = DB::table('INV_ITEM_MT')
+            ->where('ITEM_CODE', $item_code)
+            ->update([
+                'ITEM_NAME' => $request->ITEM_NAME,
+                'CAT_CODE' => $request->CAT_CODE,
+                'TYPE_CODE' => $request->TYPE_CODE,
+                'ACCODE' => $request->ACCODE,
+                'HS_CODE' => $request->HS_CODE,
+                'PCONV_FACTOR' => $request->PCONV_FACTOR,
+                'PITEM_UOM' => $request->PITEM_UOM,
+                'SCONV_FACTOR' => $request->SCONV_FACTOR,
+                'SITEM_UOM' => $request->SITEM_UOM,
+                // '' => now(), // Optionally include a timestamp
+            ]);
+
+            // dd( $updated);
+
+        // Check if the update was successful
+        if ($updated) {
+            return redirect()->route('edit.items', ['item_code' => $item_code])->with('success', 'Item updated successfully.');
+
+        } else {
+            return redirect()->back()->with('error', 'Failed to update the item.');
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Iteminfo $iteminfo)
-    {
-        //
+   /**
+ * Remove the specified resource from storage.
+ */
+public function destroy($item_code)
+{
+    // Find the item based on item_code
+    $item = DB::table('INV_ITEM_MT')->where('ITEM_CODE', $item_code)->first();
+
+    // Check if the item exists
+    if (!$item) {
+        return redirect()->route('item.index')->with('error', 'Item not found.');
     }
+
+    // Perform the deletion
+    $deleted = DB::table('INV_ITEM_MT')->where('ITEM_CODE', $item_code)->delete();
+
+    // Check if the deletion was successful
+    if ($deleted) {
+        return redirect()->route(route: 'create.item.form')->with('success', 'Item deleted successfully.');
+    } else {
+        return redirect()->back()->with('error', 'Failed to delete the item.');
+    }
+}
+
 }
