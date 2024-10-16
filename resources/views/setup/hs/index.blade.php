@@ -15,7 +15,7 @@
                     <div class="row mb-3 form-row">
                         <div class="col-md-3">
                             <label for="hsCode" class="form-label">HS Code</label>
-                            <input type="text" class="form-control" name="hs_code" value="" required>
+                            <input type="text" class="form-control" name="hs_code" value="{{ old('hs_code') }}"required>
                         </div>
                         <div class="col-md-5">
                             <label for="description" class="form-label">Descriotion</label>
